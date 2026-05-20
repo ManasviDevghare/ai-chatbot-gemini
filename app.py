@@ -2,14 +2,8 @@ import os
 import time
 import google.generativeai as genai
 import streamlit as st
-from dotenv import load_dotenv
-
-# ---------------------------
-# Load Environment Variables
-# ---------------------------
-load_dotenv()
-
-API_KEY = os.getenv("GOOGLE_API_KEY", "").strip()
+api_key = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=api_key)
 
 # Stable model for free tier
 MODEL_NAME = "gemini-2.5-flash"
