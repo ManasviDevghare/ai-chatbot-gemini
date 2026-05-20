@@ -17,8 +17,8 @@ st.set_page_config(page_title="Gemini Chat", layout="centered")
 # Initialize Gemini once
 # ---------------------------
 if "model" not in st.session_state:
-    if API_KEY:
-        genai.configure(api_key=API_KEY)
+    if api_key:
+        genai.configure(api_key=api_key)
         st.session_state.model = genai.GenerativeModel(MODEL_NAME)
 
 # ---------------------------
@@ -100,7 +100,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 # ---------------------------
 if prompt := st.chat_input("Message Gemini..."):
 
-    if not API_KEY:
+    if not api_key:
         response_text = "âŒ Missing GOOGLE_API_KEY in .env"
 
     else:
